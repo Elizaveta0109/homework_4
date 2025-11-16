@@ -10,7 +10,7 @@ def test_demoqa():
     browser.element('#lastName').type('Sytaya')
     browser.element('#userEmail').type('eliza@mail.ru')
     browser.element(by.text('Female')).click()
-    browser.element('#userNumber').type('89031112233')
+    browser.element('#userNumber').type('9031112233')
     browser.element('#dateOfBirthInput').click()
     browser.element('.react-datepicker__month-select').click().element(by.text('September')).click()
     browser.element('.react-datepicker__year-select').click().element(by.text('2000')).click()
