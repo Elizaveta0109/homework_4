@@ -15,7 +15,7 @@ def test_demoqa():
     browser.element('.react-datepicker__month-select').click().element(by.text('September')).click()
     browser.element('.react-datepicker__year-select').click().element(by.text('2000')).click()
     browser.element('.react-datepicker__day--001').click()
-    browser.element('#subjectsInput').type('History').press_enter()
+    browser.element('#subjectsInput').type('Maths').press_enter()
     browser.element(by.text('Music')).click()
 
     browser.element("#uploadPicture").perform(command.js.scroll_into_view)
@@ -42,7 +42,7 @@ def test_demoqa():
                          'Gender Female',
                          'Mobile 9031112233',
                          'Date of Birth 1 September,2000',
-                         'Subjects History',
+                         'Subjects Maths',
                          'Hobbies Music',
                          'Picture picture.horse.jpg',
                          'Address Moscow',
