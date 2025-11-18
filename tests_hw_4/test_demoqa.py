@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import pytest
 from selene import browser, by, have, command
@@ -15,13 +16,13 @@ def test_demoqa():
     browser.element('.react-datepicker__month-select').click().element(by.text('September')).click()
     browser.element('.react-datepicker__year-select').click().element(by.text('2000')).click()
     browser.element('.react-datepicker__day--001').click()
-    browser.element('#subjectsInput').type('blablabla')
+    browser.element('#subjectsInput').type('History').press_enter()
     browser.element(by.text('Music')).click()
 
-    browser.element("#uploadPicture").perform(command.js.scroll_into_view).click()
+    browser.element("#uploadPicture").perform(command.js.scroll_into_view)
 
     picture_path = str(Path(__file__).parent.joinpath('resources', 'picture.horse.jpg').resolve())
-    browser.element('#uploadPicture').set_value(picture_path).with_(timeout=browser.config.timeout * 6)
+    browser.element('#uploadPicture').set_value(picture_path)
 
     browser.element('#currentAddress').type('Moscow')
     browser.element('#state').click()
@@ -36,13 +37,16 @@ def test_demoqa():
     )
 
     # Таблица с результатами
-    results = browser.element('.table-responsive')
-    results.should(have.text('Elizaveta Sytaya'))
-    results.should(have.text('eliza@mail.ru'))
-    results.should(have.text('Female'))
-    results.should(have.text('9031112233'))
-    results.should(have.text('1 September,2000'))
-    results.should(have.text('blablabla'))  # сайт отображает "Maths"
-    results.should(have.text('Music'))
-    results.should(have.text('Moscow'))
-    results.should(have.text('Haryana Karnal'))
+    browser.element('#table-responsive').all('tr').should(
+        have.exact_texts('Label Values',
+                         'Student Name Elizaveta Sytaya',
+                         'Student Email eliza@mail.ru',
+                         'Gender Female',
+                         'Mobile 9031112233',
+                         'Date of Birth 1 September,2000',
+                         'Subjects History',
+                         'Hobbies Music',
+                         'Picture picture.horse.jpg',
+                         'Address Moscow',
+                         'State and City Haryana Karnal'))
+
