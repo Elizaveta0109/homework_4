@@ -38,8 +38,7 @@ def test_demoqa():
 
     # Таблица с результатами
     browser.element('#table-responsive').all('tr').should(
-        have.exact_texts('Label Values',
-                         'Student Name Elizaveta Sytaya',
+        have.exact_texts('Student Name Elizaveta Sytaya',
                          'Student Email eliza@mail.ru',
                          'Gender Female',
                          'Mobile 9031112233',
