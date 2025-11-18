@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 import pytest
 from selene import browser, by, have, command
