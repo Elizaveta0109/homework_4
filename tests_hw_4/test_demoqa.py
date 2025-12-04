@@ -36,12 +36,12 @@ def test_demoqa():
     )
 
     # Таблица с результатами
-    browser.element('#table-responsive').all('tr').should(
+    browser.element('.table').all('tbody tr').should(
         have.exact_texts('Student Name Elizaveta Sytaya',
                          'Student Email eliza@mail.ru',
                          'Gender Female',
                          'Mobile 9831112233',
-                         'Date of Birth 1 September,2000',
+                         'Date of Birth 01 September,2000',
                          'Subjects Maths',
                          'Hobbies Music',
                          'Picture picture.horse.jpg',
